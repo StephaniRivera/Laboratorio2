@@ -15,6 +15,8 @@ Primero tenemos el HEADER, cabe reclacar que todos los componentes utilizan shad
 Utilizamos el método que registra el componente con el nombre que nosotros queramos ponerle a la etiqueta.
 
 Lo que sigue es el componente del menu, como lo mencionamos anteriormente también utilizamos el Shadow DOM, los estilos y un template para definir una structura reutilizable para cada opción del menú:
+
+
 this.template = document.createElement("template");
 this.template.innerHTML = `
     <li>

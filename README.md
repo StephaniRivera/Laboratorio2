@@ -1,9 +1,7 @@
-# Laboratorio2
-Creación de Componentes Web Personalizados
+# Laboratorio 2: Creación de Componentes Web Personalizados
 
-Tenemos un index en donde llamamos a todos los scripts de nuestros componentes web, asi como tambien las etiquetas.
-En este caso tenemos el Main que usa Slots por lo tanto, podemos modificarlo para mostrar lo que nosotros queramos en este caso cuando ejecutemos lo primero que nos va a salir sera lo siguiente: 
-Esta declarado en el Index
+Tenemos un `index` en donde llamamos a todos los scripts de nuestros componentes web, así como también las etiquetas. En este caso, tenemos el `Main` que usa `slots`, por lo tanto, podemos modificarlo para mostrar lo que nosotros queramos. En este caso, cuando ejecutemos, lo primero que nos va a salir será lo siguiente:
+
 ```html
 <main-container id="main-container">
     <h2 slot="titulo">Bienvenido a mi página web</h2>
@@ -98,83 +96,11 @@ connectedCallback() {
 
 Este código define un componente web personalizado llamado <user-gallery> que muestra una galería de Pokémon utilizando datos de la API pública de Pokémon. Los estilos y la funcionalidad están encapsulados en el Shadow DOM para garantizar que el componente sea independiente y no afecte el entorno del documento principal.
 
-Explicación del Código
-1. Clase UserGallery
-La clase extiende HTMLElement para crear el nuevo elemento personalizado <user-gallery>.
-
-javascript
-Copiar código
-class UserGallery extends HTMLElement {
-    constructor() {
-        super();
-        this.shadow = this.attachShadow({ mode: 'open' });
-    }
-}
-attachShadow({ mode: 'open' }): Crea un Shadow DOM para encapsular los estilos y el contenido del componente.
-2. Contenedor y Estilo de la Galería
-En el constructor, se crea un contenedor para los elementos de la galería y se definen los estilos.
-
-javascript
-Copiar código
-this.galleryContainer = document.createElement('div');
-this.galleryContainer.classList.add('gallery-container');
-
-this.estilo = document.createElement('style');
-this.estilo.textContent = `
-    .gallery-container {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-        gap: 16px;
-        padding: 20px;
-        justify-items: center;
-    }
-    .pokemon-card {
-        width: 200px;
-        padding: 16px;
-        text-align: center;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        background-color: #fff;
-        transition: transform 0.3s;
-    }
-    .pokemon-card:hover {
-        transform: scale(1.05);
-    }
-    .pokemon-card img {
-        width: 100px;
-        height: 100px;
-        object-fit: cover;
-        margin-bottom: 8px;
-    }
-    .error-alert {
-        color: red;
-        font-weight: bold;
-    }
-`;
-Estilo Aplicado:
-.gallery-container:
-
-Configura un diseño de cuadrícula adaptable, con columnas de al menos 200px.
-Espaciado entre elementos (gap: 16px) y relleno interno (padding: 20px).
-.pokemon-card:
-
-Cada Pokémon se muestra como una tarjeta con bordes redondeados, sombra, y un efecto de escalado al pasar el cursor.
-.error-alert:
-
-Aparece en caso de error en la carga de datos, mostrando un mensaje en rojo.
-3. connectedCallback()
-Este método se ejecuta automáticamente cuando el componente se agrega al DOM. Obtiene el endpoint de la API y llama al método fetchData para cargar los datos.
-
-javascript
-Copiar código
 connectedCallback() {
     const endPoint = this.getAttribute('api-endpoint') || 'https://pokeapi.co/api/v2/pokemon?limit=20';
     console.log('Endpoint:', endPoint);
     this.fetchData(endPoint);
 }
-Detalles:
-Atributo api-endpoint:
 Si el componente incluye un atributo api-endpoint, usará ese URL como fuente de datos.
 Si no, utiliza el endpoint predeterminado: https://pokeapi.co/api/v2/pokemon?limit=20.
 fetchData(): Llama a este método para obtener los datos de la API.

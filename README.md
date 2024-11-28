@@ -9,7 +9,7 @@ Esta declarado en el Index
     <h2 slot="titulo">Bienvenido a mi página web</h2>
     <p slot="descripcion">Mi nombre es Stephani Rivera y este es el Social-Profile</p>
 </main-container>
-´´´html
+
 
 Si seleccionamos otra opción este cambiara haciendo que sea dinámico. 
 

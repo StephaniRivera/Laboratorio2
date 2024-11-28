@@ -4,7 +4,7 @@ Creación de Componentes Web Personalizados
 Tenemos un index en donde llamamos a todos los scripts de nuestros componentes web, asi como tambien las etiquetas.
 En este caso tenemos el Main que usa Slots por lo tanto, podemos modificarlo para mostrar lo que nosotros queramos en este caso cuando ejecutemos lo primero que nos va a salir sera lo siguiente: 
 Esta declarado en el Index
-    <main-container id="main-container">
+#<main-container id="main-container">
         <h2 slot="titulo">Bienvenido a mi página web</h2>
         <p slot="descripcion">Mi nombre es Stephani Rivera y este es el Social-Profile</p>
     </main-container>
